@@ -3,11 +3,11 @@ module.exports = function(grunt) {
   grunt.initConfig({
     watch: {
     	textToNumber: {
-	      files: ['*.py'],
+	      files: ['textToNumberConverter/**/*.py'],
 	      tasks: ['shell:textToNumber']
 	  	},
     	textToDate: {
-	      files: ['*.py'],
+	      files: ['textToDateConverter/**/*.py'],
 	      tasks: ['shell:textToDate']
     	},
     },
