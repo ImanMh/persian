@@ -66,12 +66,16 @@ class TextToNumber ():
         if (text in TextToNumber.tenToNineteen):
             return TextToNumber.tenToNineteen[text]
 
-        if (firstWord in TextToNumber.textNumbers[2]):
-            numOfDigits = 3
-        if (firstWord in TextToNumber.textNumbers[1]):
-            numOfDigits = 2
-        if (firstWord in TextToNumber.textNumbers[0]):
-            numOfDigits = 1
+        for i, number in enumerate(TextToNumber.textNumbers):
+            if (firstWord in TextToNumber.textNumbers[i]):
+                numOfDigits = i + 1
+
+        # if (firstWord in TextToNumber.textNumbers[2]):
+        #     numOfDigits = 3
+        # if (firstWord in TextToNumber.textNumbers[1]):
+        #     numOfDigits = 2
+        # if (firstWord in TextToNumber.textNumbers[0]):
+        #     numOfDigits = 1
 
         results = 0
         currentDigit = numOfDigits
