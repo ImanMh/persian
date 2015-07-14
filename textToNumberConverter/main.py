@@ -14,7 +14,6 @@ class TextToNumber ():
             'haft': 7,
             'hasht': 8,
             'noh': 9,
-            'dah': 10,
         },
         {
             'bist': 20,
@@ -37,6 +36,17 @@ class TextToNumber ():
             'hashtsad': 800,
             'nohsad': 900
         },
+        {
+            'hezar': 1000,
+            'dohezar': 2000,
+            'sehezar': 3000,
+            'chaharhezar': 4000,
+            'panjhezar': 5000,
+            'sheshhezar': 6000,
+            'hafthezar': 7000,
+            'hashthezar': 8000,
+            'nohhezar': 9000
+        },
     ]
 
     tenToNineteen = {
@@ -55,26 +65,28 @@ class TextToNumber ():
 
     @staticmethod
     def convert(text):
-        splitted = text.split(' o ')
-        numOfWords = len(splitted)
-        firstWord = splitted[0]
-        numOfDigits = None
+        parted = text.split(' o ')
+        first_word = parted[0]
+        num_of_digits = None
 
-        if (text in TextToNumber.tenToNineteen):
+        if text in TextToNumber.tenToNineteen:
             return TextToNumber.tenToNineteen[text]
 
         for i, number in enumerate(TextToNumber.textNumbers):
-            if (firstWord in TextToNumber.textNumbers[i]):
-                numOfDigits = i + 1
+            if first_word in TextToNumber.textNumbers[i]:
+                num_of_digits = i + 1
 
         result = 0
-        expectedTextDigit = 0
-        for i in range(0, numOfDigits + 1):
-            if (expectedTextDigit >= len(splitted)):
+        expected_text_digit = 0
+        for i in range(1, num_of_digits + 1):
+            if expected_text_digit >= len(parted):
                 break
-            split = splitted[expectedTextDigit]
-            if (split in TextToNumber.textNumbers[numOfDigits - i - 1]):
-                result += TextToNumber.textNumbers[numOfDigits - i - 1][split]
-                expectedTextDigit += 1
+            part = parted[expected_text_digit]
+            if part in TextToNumber.textNumbers[num_of_digits - i]:
+                result += TextToNumber.textNumbers[num_of_digits - i][part]
+                expected_text_digit += 1
+            elif part in TextToNumber.tenToNineteen:
+                result += TextToNumber.tenToNineteen[part]
+                expected_text_digit += 2
 
         return result

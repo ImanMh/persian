@@ -1,6 +1,7 @@
 import unittest
 from main import *
 
+
 class DummyTests (unittest.TestCase):
 
     def test_obvious(self):
@@ -10,7 +11,8 @@ class DummyTests (unittest.TestCase):
         converter = TextToNumber()
         self.assertIsInstance(converter, TextToNumber)
 
-class converter_single_digit_numbers (unittest.TestCase):
+
+class ConverterSingleDigitNumbers (unittest.TestCase):
 
     def test_can_convert_one(self):
         self.assertEqual(TextToNumber.convert('yek'), 1);
@@ -19,7 +21,7 @@ class converter_single_digit_numbers (unittest.TestCase):
         self.assertEqual(TextToNumber.convert('sefr'), 0);
 
 
-class convert_irregulars (unittest.TestCase):
+class ConvertIrregulars (unittest.TestCase):
 
     def test_can_conver_ninteen(self):
         self.assertEqual(TextToNumber.convert('noonzdah'), 19);
@@ -28,7 +30,7 @@ class convert_irregulars (unittest.TestCase):
         self.assertEqual(TextToNumber.convert('dah'), 10);
 
 
-class convert_two_digits (unittest.TestCase):
+class ConvertTwoDigits (unittest.TestCase):
 
     def test_can_conver_twenty(self):
         self.assertEqual(TextToNumber.convert('bist'), 20);
@@ -43,7 +45,7 @@ class convert_two_digits (unittest.TestCase):
         self.assertEqual(TextToNumber.convert('navad o noh'), 99)
 
 
-class convert_three_digits (unittest.TestCase):
+class ConvertThreeDigits (unittest.TestCase):
 
     def test_can_convert_one_part_three_digit(self):
         self.assertEqual(TextToNumber.convert('sad'), 100)
@@ -57,8 +59,26 @@ class convert_three_digits (unittest.TestCase):
     def test_convert_three_digit_with_middle_part_missing(self):
         self.assertEqual(TextToNumber.convert('sad o chahar'), 104)
 
+    def test_convert_three_digit_with_irregular_ending(self):
+        self.assertEqual(TextToNumber.convert('sad o dah'), 110)
 
 
+class ConvertFourDigits (unittest.TestCase):
+
+    def test_convert_one_part_four_digits(self):
+        self.assertEqual(TextToNumber.convert('hezar'), 1000)
+
+    def test_convert_two_part_four_digits(self):
+        self.assertEqual(TextToNumber.convert('hezar o sad'), 1100)
+
+    def test_convert_three_part_four_digits(self):
+        self.assertEqual(TextToNumber.convert('hezar o sad o dah'), 1110)
+
+    def test_convert_four_part_four_digits(self):
+        self.assertEqual(TextToNumber.convert('hezar o sad o yazdah'), 1111)
+
+    def test_convert_two_part_four_digits_two_middle_digits_zero(self):
+        self.assertEqual(TextToNumber.convert('hezar o yek'), 1001)
 
 
 
