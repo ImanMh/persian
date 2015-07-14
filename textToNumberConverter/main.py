@@ -1,9 +1,6 @@
-import re
-
 
 
 class TextToNumber ():
-
 
     textNumbers = [
         {
@@ -70,18 +67,14 @@ class TextToNumber ():
             if (firstWord in TextToNumber.textNumbers[i]):
                 numOfDigits = i + 1
 
-        # if (firstWord in TextToNumber.textNumbers[2]):
-        #     numOfDigits = 3
-        # if (firstWord in TextToNumber.textNumbers[1]):
-        #     numOfDigits = 2
-        # if (firstWord in TextToNumber.textNumbers[0]):
-        #     numOfDigits = 1
+        result = 0
+        expectedTextDigit = 0
+        for i in range(0, numOfDigits + 1):
+            if (expectedTextDigit >= len(splitted)):
+                break
+            split = splitted[expectedTextDigit]
+            if (split in TextToNumber.textNumbers[numOfDigits - i - 1]):
+                result += TextToNumber.textNumbers[numOfDigits - i - 1][split]
+                expectedTextDigit += 1
 
-        results = 0
-        currentDigit = numOfDigits
-        for i, split in enumerate(splitted):
-            print(numOfDigits, type(numOfDigits), text)
-            results += TextToNumber.textNumbers[currentDigit - 1][split]
-            currentDigit -= 1
-
-        return results
+        return result
