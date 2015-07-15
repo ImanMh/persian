@@ -23,16 +23,16 @@ class ConverterSingleDigitNumbers (unittest.TestCase):
 
 class ConvertIrregulars (unittest.TestCase):
 
-    def test_conver_ninteen(self):
+    def test_convert_nineteen(self):
         self.assertEqual(TextToNumber.convert('noonzdah'), 19);
 
-    def test_conver_ten(self):
+    def test_convert_ten(self):
         self.assertEqual(TextToNumber.convert('dah'), 10);
 
 
 class ConvertTwoDigits (unittest.TestCase):
 
-    def test_conver_twenty(self):
+    def test_convert_twenty(self):
         self.assertEqual(TextToNumber.convert('bist'), 20);
 
     def test_convert_two_part_two_digit_number(self):
@@ -41,7 +41,7 @@ class ConvertTwoDigits (unittest.TestCase):
     def test_convert_one_part_two_digit_numbers(self):
         self.assertEqual(TextToNumber.convert('si'), 30)
 
-    def test_convert_ninty_nine(self):
+    def test_convert_ninety_nine(self):
         self.assertEqual(TextToNumber.convert('navad o noh'), 99)
 
 
