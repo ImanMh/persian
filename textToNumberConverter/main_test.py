@@ -80,8 +80,8 @@ class ConvertFourDigits (unittest.TestCase):
     def test_convert_two_part_four_digits_two_middle_digits_zero(self):
         self.assertEqual(TextToNumber.convert('hezar o yek'), 1001)
 
-
-
+    def test_convert_one_part_with_multiplier(self):
+        self.assertEqual(TextToNumber.convert('do hezar'), 2000)
 
 
 if __name__ == '__main__':
