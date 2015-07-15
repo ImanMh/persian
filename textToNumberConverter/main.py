@@ -16,6 +16,16 @@ class TextToNumber ():
             'noh': 9,
         },
         {
+            'dah': 10,
+            'yazdah': 11,
+            'davazdah': 12,
+            'sizdah': 13,
+            'chahardah': 14,
+            'panzdah': 15,
+            'shanzdah': 16,
+            'hefdah': 17,
+            'hejdah': 18,
+            'noonzdah': 19,
             'bist': 20,
             'si': 30,
             'chehel': 40,
@@ -66,27 +76,12 @@ class TextToNumber ():
     @staticmethod
     def convert(text):
         parted = text.split(' o ')
-        first_word = parted[0]
-        num_of_digits = None
-
-        if text in TextToNumber.tenToNineteen:
-            return TextToNumber.tenToNineteen[text]
-
-        for i, number in enumerate(TextToNumber.textNumbers):
-            if first_word in TextToNumber.textNumbers[i]:
-                num_of_digits = i + 1
 
         result = 0
-        expected_text_digit = 0
-        for i in range(1, num_of_digits + 1):
-            if expected_text_digit >= len(parted):
-                break
-            part = parted[expected_text_digit]
-            if part in TextToNumber.textNumbers[num_of_digits - i]:
-                result += TextToNumber.textNumbers[num_of_digits - i][part]
-                expected_text_digit += 1
-            elif part in TextToNumber.tenToNineteen:
-                result += TextToNumber.tenToNineteen[part]
-                expected_text_digit += 2
+        for part in parted:
+            for num_group in TextToNumber.textNumbers:
+                if part in num_group:
+                    result += num_group[part]
+                    break
 
         return result
